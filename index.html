@@ -1,79 +1,456 @@
-<!DOCTYPE html>
-<html>
-
-  <head>
-    <meta charset='utf-8' />
-    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
-    <meta name="description" content="Performance : " />
-
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
-
-    <title>Performance</title>
-  </head>
-
-  <body>
-
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/jribeiro/performance">View on GitHub</a>
-
-          <h1 id="project_title">Performance</h1>
-          <h2 id="project_tagline"></h2>
-
-            <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/jribeiro/performance/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/jribeiro/performance/tarball/master">Download this project as a tar.gz file</a>
-            </section>
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <link rel="stylesheet" href="styles/main.css">
+        <!-- build:js scripts/vendor/modernizr.js -->
+        <script src="bower_components/modernizr/modernizr.js"></script>
+        <!-- endbuild -->
+        <script type="text/javascript" src="//use.typekit.net/val5gfx.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+    </head>
+    <body>
+        <div class="navbar navbar-inverse navbar-fixed-top">
+          <div class="navbar-inner">
+            <div class="wrapper">
+            <a class="brand" href="javascript:void(0);" data-whereto="#header">Web Performance 2.0</a>
+            <ul class="nav">
+              <li class="active"><a href="javascript:void(0);" data-whereto="#what">What</a></li>
+              <li><a href="javascript:void(0);" data-whereto="#why">Why</a></li>
+              <li><a href="javascript:void(0);" data-whereto="#how">How</a></li>
+            </ul>
+            </div>
+          </div>
+        </div>
+        <header id="header">
+            <div class="wrapper">
+                <h1>Web Performance 2.0</h1>
+                <h4>Gorka Molero, 11 June 2013</h4>
+            </div>
         </header>
-    </div>
+        <main class="container">
 
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
-        <h3>
-<a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
+            <section id="what">
+                <p></p><br>
+                <p>In March 2012, <a href="http://twitter.com/guypod">Guy Podjarny</a> ran a test comparing the performance of hundreds of shiny new responsive websites across four different screen resolutions. The results were very dissapointing. <a href="#ref-1"><sup>(1)</sup></a></p>
+                <p>Two years into the rise of Responsive Web Design, after every imaginable sort of designer and developer had jumped into the train, it took a test to almost rock the theory to its foundations.</p>
+                <p>Guy proved that almost every known responsive site was overweight.</p>
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
+                <blockquote>
+                    <p>We've made the internet in our image… Obese</p>
+                    <cite>Jason Grigsby</cite>
+                </blockquote>
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
+                <p>But, most importantly, every mobile user was receiving the same kilobyte overload as a desktop user.</p>
+                <p>The community had different reactions to the fact. Some claimed Responsive design wasn't the ultimate solution, perhaps not mature enough for the challenges web designers face today.</p>
+                <p>Thankfully, the Web community can always count on a number of people who will grab the bull by the horns and turn the situation around. Modern Web gurus like <a href="http://twitter.com/brad_frost">Brad Frost</a>, <a href="http://twitter.com/lukew">Luke Wroblewski</a> or <a href="http://twitter.com/codepo8">Christian Heilmann</a> saw opportunity where others shouted crisis and managed to turn the problem to the community's advantage.</p>
 
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
+                <blockquote>
+                    <p>If your website is 15MB, it's not HTML5, it's stupid</p>
+                    <cite>Christian Heilmann</cite>
+                </blockquote>
 
-<h3>
-<a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
+                <p>Web performance has traditionally been built around (no offence) developer-exclusive jargon.</p>
+                <p>Terms like GZIPing, uglifying, minifying, DNS Lookup, file-concatenation… This obscure words push designers out of the ecuation.</p>
+                <p>Smart people in the community, though, have since realized that the problem has a deeper root. It really doesn't matter if you optimize or compress an ultra-high-res image, if your plan is to hide it from a mobile user and still make him download it.</p>
+                
+                <blockquote>
+                    <p>Good performance is good design</p>
+                    <cite>Brad Frost</cite>
+                    <a href="#ref-2"><sup>(2)</sup></a>
+                </blockquote>
 
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+                <p>To achieve truly lightweight sites, performance shouldn't only be a concern. <strong>It should be treated as a design feature.</strong></p>
+                <p>To them, performance is like any other issue. Sites that overcome it are the ones who acknowledged it from the start. And the ones that overlook it are the ones that suffer it in the end.</p>
+                
+                <blockquote>
+                    <p>Performance is about respect. Respect your users and they <em>will</em> come back.</p>
+                </blockquote>
+            </section>
+            
+            <section id="why">
+                <h2>The Why</h2>
+                <p>It's not only that you want users to have a good experience. If that was the case you could easily swap performance for a more important concern in your agenda.</p>
 
-<h3>
-<a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
+                <h3>Page Abandonment</h3>
+                <p>Research shows 57% of users will leave your site if it takes more than 3 seconds to load. <a href="#ref-3"><sup>(3)</sup></a></p>
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+                <h3>Google, page speed & SEO</h3>
+                <p>Back from the spring of 2010, Google takes speed as a ranking factor. <a href="#ref-4"><sup>(4)</sup></a></p>
+                <p>The impact is not major for average-speed sites, but if the page falls behind a certain threshold, it will be punished by the company's search algorythm.</p>
+                <p>This proves speed not only is a concern when talking about User Experience. Be aware of loading speed if your site is to be ranked well among the competition.</p>
 
-<h3>
-<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
+                <h3>Bandwidth considerations</h3>
+                <p>Back in the day, people used to talk about the very abstract concept of 'Mobile Context'. Google´s famous theory  breaks mobile users down to three types <a href="#ref-5"><sup>(5)</sup></a>: </p>
+                <ul>
+                    <li>
+                        <h4>Repetitive Now</h4>
+                        <p>People that use their phone to stay up to date with ongoing, repetitive changes (sports scores, Facebook feeds or stock market)</p>
+                    </li>
+                    <li>
+                        <h4>Bored Now</h4>
+                        <p>Users that put their phone out while waiting for something to happen.</p>
+                    </li>
+                    <li>
+                        <h4>Urgent Now</h4>
+                        <p>Pretty self explanatory</p>
+                    </li>
+                </ul><br>
+                <p>Sounds assumable, right?</p>
+                <p>Well, the truth is there is no truth about this. There is no <em>'mobile context'</em>. People will use their phone not only when they are walking in the street, travelling by train or relaxing in their home. <strong>They do everything at the same time!</strong></p>
+                <p>Phones follow people everywhere, so people use them anywhere.</p>
 
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
+                <blockquote>
+                    <p>Mobile context is important, but first we need to figure out what the heck it is.</p>
+                    <cite>Tim Kadlec</cite>
+                </blockquote>
 
-<h3>
-<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
+                <p>Luke Wroblewski shows some really interesting stats: <a href="#ref-6"><sup>(6)</sup></a></p>
+                <blockquote>
+                    <h4>Where are people using mobile devices?</h4>
+                    <ul>
+                        <li>84% at home</li>
+                        <li>80% during miscellaneous downtime throughout the day</li>
+                        <li>76% waiting in lines of waiting for appointments</li>
+                        <li>69% while shopping</li>
+                        <li>64% at work</li>
+                        <li>62% while watching TV (alt. study claims 84%)</li>
+                        <li>47% during commute in to work</li>
+                        <br>
+                        <p>. . .</p>
+                    </ul>
+                </blockquote>
 
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
-      </section>
-    </div>
+                <p>As new situations emerge, as new markets and different habits rise, mobile context will change. We can safely assume that the concept of <em>mobile context</em> will always be on the move, until people stop using mobile phones.</p>
 
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p class="copyright">Performance maintained by <a href="https://github.com/jribeiro">jribeiro</a></p>
-        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
-      </footer>
-    </div>
+                <p>This leads us to keep an eye on bandwidth. There is only one scenario where you can serve users an obese website and get away with it: serve it to their macbook pros, while they are at home in UK or the USA with a full bandwidth.</p>
 
-    
+                <p>But the rest of possible situations, which are a great many, have to be covered aswell. These include the seemingly endless stream of devices poured every day into the market, which people use to visit websites.</p>
 
-  </body>
+                <blockquote>
+                    <p>You don’t get to decide which devices access your site, your users do</p>
+                    <cite>Karen McGrane</cite>
+                </blockquote>
+
+                <p>They include the countries which didn't have that many smartphones a few years ago, but are ruthlessly getting ahead.</p>
+
+                <blockquote>
+                    <p>If your stuff, if your content, if your information, if your products, if your services are not available on mobile, they don’t exist for these people</p>
+                    <cite>Karen McGrane</cite>
+                </blockquote>
+
+                <p>But more importantly, they include all the places people will be at when using your site. So you have to watch all bandwidths. It's not only inhabitants of poor areas of the world clearly don't have the same data-speed coming their way. People will try to access a site at work, with a 100mb/s connection; at home, with 2 to 30mb/s and also with 3G, and also with 4G, and also with a data plan, etc., etc.</p>
+
+                <p>To put it bluntly, Responsive design is not anymore about screen sizes but about different scenarios, so the solutions must be flexible, adaptable and thought out top to bottom.</p>
+            </section>
+
+            <section id="how">
+                <h2>And How?</h2>
+
+                <p>Well, glad you asked.</p>
+                <p>We said before not to look at performance as a bunch of automated tasks run server side that help with an already doomed site. There are ways to undertake this concerns and turn them into a competitive advantage.</p>
+
+                <h3>What to avoid</h3>
+                <p>Guy Podjarny cites three main reasons for the number of bloated responsive websites we see out there: <a href="#ref-1"><sup>(1)</sup></a></p>
+                
+                <blockquote>
+                    <ul>
+                        <li>
+                            <h4>Download and Hide</h4>
+                            Assets are still downloaded, but hidden.
+                        </li>
+                        <li>
+                            <h4>Download and Shrink</h4>
+                            High-res desktop-level images are downloaded, and shrinked to fit the users screen
+                        </li>
+                        <li>
+                            <h4>Excess DOM</h4>
+                            There is no way to avoid browsers parsing and processing all areas of the DOM, including the hidden ones
+                        </li>
+                    </ul>
+                </blockquote>
+
+                <h3>A preemptive approach</h3>
+                <p>There's a great deal of information out there about why websites keep failing to surpass expectations in performance. But what most people come to say is something like 'Be responsible from the start'. All techniques I'm going to cover have been around for a while. To me the interesting part comes in how they mix and intertwine, covering each other's flaws and combining their strenghts. It is now, deep in the mobile explosion that they show how powerful they are.</p>
+
+                <h4>Progressive Enhancement...</h4>
+                <p>...is all about providing a web experience reduced to the essential and take it from there.</p>
+                <p>A couple of years ago this theory was taken mostly from a browser point of view. With emerging technologies like HTML5, CSS3, jQuery and so on, the web makers had kind of forgotten about their users. Quite a big percentage of them were getting an incomplete form of their site, relying a bit too much on this shiny new tech.</p>
+                <p>Now that Webkit engines and Firefox and others have taken over much of the market share, the problem is the enormous quantity of devices with browsers that don't have the capabilities of the brand new iPhone or Samsung. Again, Progressive Enhancement is the only approach which takes care of these <em>forgotten</em> players first and leave the shine for the ones that can take it.</p>
+                
+                <h4>Mobile First Development</h4>
+                <p>Back in 2009, Luke Wroblewski proposed designing mobile first for three reasons: <a href="#ref-7"><sup>(7)</sup></a></p>
+                <blockquote>
+                    <ul>
+                        <li>Mobile is exploding</li>
+                        <li>Mobile forces you to focus (allowing you to get rid of the clutter that stems from having too much <em>screen real estate</em>)</li>
+                        <li>Mobile extends your capabilities (with technology like GPS, geolocation, multi-touch gestures, accelerometer, cameras...)</li>
+                    </ul>
+                </blockquote>
+                <p>Since then, Web design has been rapidly shifting to this approach. Along the way not only designers, also many developers, have pointed out that building mobile first gives you an edge over desktop development, very related to Luke W's second point. Progressive Enhancement and Mobile First Development have suffered a fusion of sorts. Devs start building for mobile and progressively enhance from there, taking larger screen space as an enhancement over a mobile core foundation.</p>
+
+                <p><a href="http://twitter.com/JMOIAM‎">Jordan Moore</a> makes a good summary of the reasons<a href="#ref-8"><sup>(8)</sup></a>. He argues that, since <em>'we can't safely bet on connection speed'</em>, <em>'The 'responsible Web designer' would build for the lowest point of entry - a mobile-first approach, assuming for the slowest connection speed and building up from there to larger breakpoints for faster connections'</em>. In the future, we will be able to rely on solid bandwidth detection, but for now it is a good idea to take it as a concern and try not to take any steps in the wrong direction.</p>
+
+                <h5>To sum up:</h5>
+                <p>Code the site for the lowest resolution and possibilities that you care about. Make true use of Progressive Enhancement from the start. Build extra functionality, enhanced visuals and interaction when it can be used.</p>
+
+                <h4><strong>RESS</strong>: REsponsive Web design + Server Side components</h4>
+
+                <p>To many people, Responsive design had kind of an essential short-coming. It relied mainly in screen width detection.</p>
+                <p>As more and more types of devices emerge, hybrid devices like touch screen laptops and so on, feature detection has become essential for Responsive design. Libraries that provide it, mainly <a href="http://modernizr.com/">Modernizr</a>, have bloomed and are now used on most projects. They help devs valuate whether the client's browser supports certain functionality and provide it accordingly. But many times it's tricky to rely on browsers, because 'they' will say they support features when, really, 'they' do whatever they want. Support for new features is usually partial.</p>
+
+                <p>RESS was born to provide a solution. Like Mobile First, the term was coined by Luke Wroblewski in 2011 <a href="#ref-9"><sup>(9)</sup></a>. It relies on detecting the user's device type, evaluating it and providing an experience taylored for it. To do this, there are heavy tools out there, like <a href="http://wurfl.sourceforge.net/">WURFL</a>, <a href="https://deviceatlas.com/">DeviceAtlas</a> or lighter ones like <a href="http://github.com/fnando/browser">Browser Gem</a>, that read the user agent string and start from there.</p>
+
+                <p>Evaluating the device type has other advantages. It allows devs to serve different templates depending on the user's device. Say you are building a ver large site, and you want your mobile navigation to be a simplified one, that doesn´t take half as much space as the desktop one. You could either play with content, showing and hiding stuff, moving divs around with JavaScript, or you could have different templates for mobile and desktop screens and have the server decide which one to serve.</p>
+
+                <p>This gives Responsive design an edge over Mdot sites. Mdot's only advantage until RESS came along was providing an experience specific for mobile devices.</p>
+
+                <br>
+
+                <p>The BBC (very smart people, with millions of readers across the globe and a big responsibility toward their users) talk about how RESS and Progressive Enhancement could work as one and only. They call their approach <strong>Cut the Mustard!</strong> <a href="#ref-10"><sup>(10)</sup></a>. It consists of creating a core experience that will work on every device you can imagine. After that, they evaluate the device on the server and they decide whether or not it 'Cuts the mustard'. If it does, a progressively enhanced experience is handed out. But again, if it doesn't, the user can still access the core content.</p>
+                
+                <h4>Conditional Loading</h4>
+                <blockquote>
+                    <p>Mobile users want to see our menu hours and delivery number. Desktop users definitely want this 1mb png of someone smiling at salad</p>
+                    <cite>Mat 'Wilto' Marquis</cite>
+                </blockquote>
+
+                <p>Let's take a couple of points of view into account:</p>
+
+                <ul>
+                    <li>Mobile users want THE content, as much as desktop users.</li>
+                    
+                    <blockquote>
+                        <p>If your content is accessible from a URL, it will be accessed by mobile devices.</p>
+                        <cite>Brad Frost</cite>
+                    </blockquote>
+
+                    <li>Mobile forces you to focus. There are some constraints designers have to embrace to serve the same content, like bandwidth and lesser screen size.</li>
+                </ul>
+
+                <p>Also refered to as 'Agressive Enhancement', this development technique allows designers to focus on the core content and progressively enhance it for bigger screens. It provides basic access to certain content that can later be injected on the page when space becomes available.</p>
+
+                <blockquote>
+                    <p>It might be more accurate to think of conditional loading as a content-first approach. You don’t have the luxury of sidebars or multiple columns to fill up with content that’s just nice to have rather than essential</p>
+                    <cite>Jeremy Keith</cite>
+                </blockquote>
+
+                <p>Use excellent tools like <a href="http://github.com/paulirish/matchMedia.js/">MatchMedia</a>, that mimics CSS behaviour evaluating screen size in JavaScript.</p>
+
+                <h5>Lazy Loading</h5>
+                <p>Image and user heavy sites that need to be optimized for mobile, like Facebook, Twitter or Pinterest, make use of Lazy Loading to provide a better experience. When you first load the page, a number of posts is loaded. When you scroll down, the designer assumes it is because you want to browse through even more content, so it is injected in the page via Ajax. This makes the page load much faster by avoiding DOM excess.</p>
+
+                <h4>Setting a performance budget</h4>
+                <p><a href="http://twitter.com/tkadlec‎">Tim Kadlec</a> argues that setting a maximum page weight and being always aware of it is the ultimate way to keep page load down <a href="#ref-11"><sup>(11)</sup></a>. 'Set your goals and stick to them'. Steve Souders mentions three options to choose from, if you fall over your budget:</p>
+                <blockquote>
+                    <ul>
+                        <li>Optimize an existing feature or asset</li>
+                        <li>Remove an existing feature or asset</li>
+                        <li>Don't add a new feature of asset.</li>
+                    </ul>
+                </blockquote>
+                <p>To me this sounds a bit radical, but it makes a point of closely following the overall performance of a site over time and with each new feature.</p>
+
+                <h2>Let's get Technical!</h2>
+                <p>There are certain methods to achieve speed, that work in a more technical and less conceptual level.</p>
+
+                <h3>Image Techniques</h3>
+                <p>Images constitute around 60% of websites. If you are serving mobile users with unknown bandwidth connections desktop-sized images, you are basically dooming your site to poor performance</p>
+                <p>The trick to overcome this is to serve different versions of images, depending on screen size or type. You would serve a small image to a mobile phone and a high-res one to a desktop. You would serve a double-sized image to a Hi-DPI device.</p>
+
+                <h4>Responsive Images</h4>
+                <p>Designers and developers all over the world have been fighting to get responsive images into the HTML specification. <a href="http://twitter.com/wilto‎">Mat 'Wilto' Marquis</a> is one of the most outspoken. <a href="http://www.w3.org/community/respimg/">The battle is not yet won</a>, but there are a number of solutions that rely on JavaScript to achieve a desired result. <a href="http://twitter.com/scottjehl">Scott Jehl</a>, also from the <a href="http://filamentgroup.com/">Filament Group</a>, wrote a plugin that mimics the markup proposed by the community and works like a charm: <a href="http://github.com/scottjehl/picturefill">PictureFill</a></p>
+
+                <h4>Compressive Images</h4>
+                <p><a href="http://twitter.com/daanjobsis‎">Daan Jobsis</a>, a dutch designer, found a very strange phenomenon when compressing images with Photoshop <a href="#ref-12"><sup>(12)</sup></a>. He proved the following: Take an image, double its size (200%), compress it to 25% or less its original quality, resize it back in the browser(100%). The image will not only be lighter in size but already optimized for HiDPI screens, since its pixel density is already doubled.</p>
+                <p>The only observed problem is that the browser might have a hard time painting a double-sized image back to its original size (if it has to do it a hundred times, like in image-heavy sites), so a little bit of testing is required to see if this is the optimal solution.</p>
+
+                <h4>Vectors VS Bitmaps</h4>
+                <p>SVG images are the way to go at the time. They are completely scalable, so they will perform better in any screen. Providing fallback is very easy through Modernizr.</p>
+
+                <h4>Icon Fonts</h4>
+                <p>Technically they are vector based images, only served as a font. As <a href="http://twitter.com/chriscoyier‎">Chris Coyier</a> puts it, 'Icon Fonts are Awesome because':</p>
+                <blockquote>
+                    <ul>
+                        <li>You can easily resize</li>
+                        <li>You can easily change the color</li>
+                        <li>You can easily shadow their shape</li>
+                        <li>They will work in IE6, unlike transparent PNGs</li>
+                        <li>You can do everything you can do with images</li>
+                        <li>You can do anything you would do with typography</li>
+                    </ul>
+                </blockquote>
+
+                <h4>HiDPI images</h4>
+                <p><a href="https://twitter.com/dbushell">Dave Bushell</a> wrote recently a very interesting article with some thinking on HiDPI images <a href="#ref-12"><sup>(12)</sup></a>. He argues that, even if today we have the possibility of serving iPhones, iPads and other modern devices with images that will fulfill their screen capabilities, it is still too soon to assume a site is not going to get crippled by doing it.</p>
+                <blockquote>
+                    <p>Does a fast connection and high pixel density mean users even want higher quality? Not likely on mobile data plans.</p>
+                    <cite>Dave Bushell</cite>
+                </blockquote>
+
+                <p>The point is to do it but do it sensibly, considering the case before jumping into 4x images.</p>
+
+                <h4>What's next</h4>
+                <p>Google recently developed a new image format, WebP. It provides lossless and lossy compression for Web images, resulting in files 3x smaller, compared with PNG.</p>
+                <p>There are simple, lightweight JavaScript libraries that convert to and from WebP available today. Considering the impact of Google's latest tools, it's probably a good idea to start experimenting today in order to handle an image-heavy site .</p>
+                
+                <h3>Asset Loading</h3>
+                <p>Load assets carefully and in order. Controlling this aspect provides a big advantage, by allowing the page to render the basic content and enhance it afterwards.</p>
+                <ul>
+                    <li>
+                        <h4>CSS, Images</h4>
+                        <p>Controlled loading through media queries, conditional or lazy loading and responsive / compressive image techniques</p>
+                    </li>
+                    <li>
+                        <h4>JavaScript</h4>
+                        <p>Make use of HTML5 functionality, like <em>async</em> or <em>defer</em>. There are also loading helpers like <a href="http://requirejs.org/">RequireJS</a> that can handle loading and dependencies.</p>
+                    </li>
+                    <li>
+                        <h4>Advertising, Social Widgets or any third party assets</h4>
+                        <p>Just <strong>inject after load.</strong></p>
+                    </li>
+                </ul>
+
+                <h3>Old-school Performance Techniques</h3>
+                <p>They have been around for a while, but are still as relevant today.</p>
+
+                <h4>Reduce the number of HTTP Requests</h4>
+                <p>To achieve this devs have to think resource by resource, but here are a number of guidelines:</p>
+
+                <ul>
+                    <li>Concatenate all CSS files or make use of CSS Preprocessors to compile them into one file.</li>
+                    <li>Unify all JS Plugins under the same file and always load them in the footer, unless they really need to block the rendering of the page (if you load Typekit fonts in the footer, you will get the famous FOUT or 'Flash of Unstyled Text').</li>
+                    <li>If you must use PNG images, use sprites. They unify all images in one and make use of CSS to cut the pieces. There are a number of online solutions to do this.</li>
+                    <li>Make use of the data URI scheme where possible, that allows you to include images as inline data, getting rid of some more HTTP requests.</li>
+                </ul>
+
+                <h4>Reduce the number of Bytes</h4>
+                <p>Uglify, minify every Script or CSS file you call from the page. Set your server up to allow GZIP compression and expansion and GZIP every asset.</p>
+            </section>
+
+            <section id="summary">
+                <h3>In Summary</h3>
+                <p>The importance of Web performance has been slightly overlooked since the birth of Responsive design.</p>
+                <p>Designers and developers have been focusing on how to solve the Responsive puzzle and, along their way, a new multi-bandwidth, multi-device, multi-location Web is starting to come into focus.</p>
+                <p>To be prepared for tomorrow's problems, we have to include performance as an essential consideration, as the Desktop-centered Web is disappearing before our eyes. The mobile user is hastier and readier and won't jump through hoops to get the content, and since more and more sites spring every day, being fast will mean being ahead.</p>
+            </section>
+                <hr>
+            <section id="ref">
+                <h3>Reference</h3>
+
+                <blockquote id="ref-1">
+                    <a href="http://www.guypo.com/mobile/performance-implications-of-responsive-design-book-contribution/"><sup>1 </sup>Performance Implications of Responsive Design</a>
+                    <cite>Guy Podjarny</cite>
+                </blockquote>
+
+                <blockquote id="ref-2">
+                    <a href="http://bradfrostweb.com/blog/post/performance-as-design/"><sup>2 </sup>Performance as Design</a>
+                    <cite>Brad Frost</cite>
+                </blockquote>
+
+                <blockquote id="ref-3">
+                    <a href="http://www.strangeloopnetworks.com/resources/infographics/web-performance-and-user-expectations/website-abandonment-happens-after-3-seconds/"><sup>3 </sup>Website abandonment happens after 3 seconds</a>
+                </blockquote>
+
+                <blockquote id="ref-4">
+                    <a href="http://www.webpronews.com/how-page-load-speed-impacts-seo-and-user-experience-2013-04"><sup>4 </sup>How Page Load Speed Impacts SEO And User Experience</a>
+                    <cite>Spencer Yao</cite>
+                </blockquote>
+
+                <blockquote id="ref-5">
+                    <a href="http://alistapart.com/article/organizing-mobile"><sup>5 </sup>Organizing Mobile</a>
+                    <cite>Luke Wroblewski</cite>
+                </blockquote>
+
+                <blockquote id="ref-6">
+                    <a href="http://www.lukew.com/ff/entry.asp?1263"><sup>6 </sup>When & Where Are People Using Mobile Devices?</a>
+                    <cite>Luke Wroblewski</cite>
+                </blockquote>
+
+                <blockquote id="ref-7">
+                    <a href="http://www.lukew.com/ff/entry.asp?933"><sup>7 </sup>Mobile First</a>
+                    <cite>Luke Wroblewski</cite>
+                </blockquote>
+
+                <blockquote id="ref-8">
+                    <a href="http://coding.smashingmagazine.com/2013/03/11/responsible-web-design/"><sup>8 </sup>Responsible Considerations For Responsive Web Design</a>
+                    <cite>Jordan Moore</cite>
+                </blockquote>
+
+                <blockquote id="ref-9">
+                    <a href="http://www.lukew.com/ff/entry.asp?1392"><sup>9 </sup>RESS: Responsive Design + Server Side Components</a>
+                    <cite>Luke Wroblewski</cite>
+                </blockquote>
+
+                <blockquote id="ref-10">
+                    <a href="http://responsivenews.co.uk/post/18948466399/cutting-the-mustard"><sup>10 </sup>Cutting the mustard</a>
+                    <cite>BBC´s Responsive News</cite>
+                </blockquote>
+
+                <blockquote id="ref-11">
+                    <a href="http://timkadlec.com/2013/01/setting-a-performance-budget/"><sup>11 </sup>Setting a Performance Budget</a>
+                    <cite>Tim Kadlec</cite>
+                </blockquote>
+
+                <blockquote id="ref-12">
+                    <a href="http://blog.netvlies.nl/design-interactie/retina-revolutie-follow-up/"><sup>12 </sup>Retina Revolutie Follow Up</a>
+                    <cite>Daan Jobsis</cite>
+                </blockquote>
+
+                <blockquote id="ref-13">
+                    <a href="http://dbushell.com/2013/06/03/the-raster-image-paradox/"><sup>13 </sup>The Raster Image Paradox</a>
+                    <cite>Dave Bushell</cite>
+                </blockquote>
+
+                
+
+            </section>
+        </main>
+
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+        <script>
+            var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+            (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+            g.src='//www.google-analytics.com/ga.js';
+            s.parentNode.insertBefore(g,s)}(document,'script'));
+        </script>
+
+        <!-- build:js scripts/main.js -->
+        <script src="bower_components/jquery/jquery.js"></script>
+        <script src="scripts/plugins.js"></script>
+        <script src="scripts/main.js"></script>
+        <!-- endbuild -->
+
+        <!-- build:js(.tmp) scripts/coffee.js -->
+        <script src="scripts/hello.js"></script>
+        <!-- endbuild -->
+
+        <!-- build:js scripts/plugins.js -->
+        <script src="bower_components/sass-bootstrap/js/bootstrap-affix.js"></script>
+        <script src="bower_components/sass-bootstrap/js/bootstrap-alert.js"></script>
+        <script src="bower_components/sass-bootstrap/js/bootstrap-dropdown.js"></script>
+        <script src="bower_components/sass-bootstrap/js/bootstrap-tooltip.js"></script>
+        <script src="bower_components/sass-bootstrap/js/bootstrap-modal.js"></script>
+        <script src="bower_components/sass-bootstrap/js/bootstrap-transition.js"></script>
+        <script src="bower_components/sass-bootstrap/js/bootstrap-button.js"></script>
+        <script src="bower_components/sass-bootstrap/js/bootstrap-popover.js"></script>
+        <script src="bower_components/sass-bootstrap/js/bootstrap-typeahead.js"></script>
+        <script src="bower_components/sass-bootstrap/js/bootstrap-carousel.js"></script>
+        <script src="bower_components/sass-bootstrap/js/bootstrap-scrollspy.js"></script>
+        <script src="bower_components/sass-bootstrap/js/bootstrap-collapse.js"></script>
+        <script src="bower_components/sass-bootstrap/js/bootstrap-tab.js"></script>
+        <!-- endbuild -->
+</body>
 </html>
